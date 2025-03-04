@@ -1,1 +1,11 @@
-#Se explica el codigo del ejemplo 2.
+# Crear una lista de frutas
+# Aquí estamos creando una lista llamada 'frutas' con tres elementos: 'manzana', 'plátano' y 'naranja'
+frutas = ["manzana", "plátano", "naranja"]  # Sintaxis: lista = [elemento1, elemento2, ...]
+
+# 2. Añadir un nuevo elemento a la lista
+# Usamos el método 'append' para añadir 'pera' al final de la lista 'frutas'
+frutas.append("pera")  # Sintaxis: lista.append("nuevo_elemento")
+
+# 3. Imprimir la lista de frutas
+# Usamos 'print' para mostrar el mensaje "Lista de frutas:" seguido de la lista completa de frutas
+print("Lista de frutas:", frutas)  # Sintaxis: print("mensaje", variable)
