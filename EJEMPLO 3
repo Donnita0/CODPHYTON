@@ -1,4 +1,6 @@
-Este codigo solicita info acerca del nombre y de la edad de una persona y envia un mensaje personalizado 
+# TEAM VOLTIOS 
+
+# Este codigo solicita info acerca del nombre y de la edad de una persona y envia un mensaje personalizado 
 
 # Solicitar el nombre del usuario
 nombre = input("¿Cuál es tu nombre? ")
@@ -11,3 +13,8 @@ año_100 = (2025 - edad) + 100  # Suponiendo que estamos en 2025
 
 # Mostrar el mensaje final
 print(f"Hola {nombre}, cumplirás 100 años en el año {año_100}.")
+
+# Prueba de hospedaje en github marzo 2025
+
+# Realizado por Cervantes Rendon Jonathan Isaac/Solano Gonzalez Josue/Cortes Romero Donna 
+
