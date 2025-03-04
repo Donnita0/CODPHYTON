@@ -1,4 +1,4 @@
-Equipo:
+Equipo: Voltios
 #Trabajo: Yorleni y Donnalet.
 
 #El codigo hace 4 operaciones matematicas basicas con dos numeros ya definidos.
@@ -10,3 +10,19 @@ numero2 = 3 #Asignamos el valor 3 a la variable numero2
 #Realizamos operaciones matematicas basicas 
 suma = numero1 + numero2 #sumamos numero1 y numero2 y guardamos el resultado en una suma.
 resta = numero1 - numero2 #Restamos numero2 a numero1 y guardamos el resultado en resta
+
+# Definir variables
+variable1 = valor1  # Asigna un número a una variable
+variable2 = valor2  # Asigna otro número a otra variable
+
+# Operaciones matemáticas
+resultado_suma = variable1 + variable2  # Suma
+resultado_resta = variable1 - variable2  # Resta
+resultado_multiplicacion = variable1 * variable2  # Multiplicación
+resultado_division = variable1 / variable2  # División
+
+# Mostrar resultados en pantalla
+print("Suma:", resultado_suma)
+print("Resta:", resultado_resta)
+print("Multiplicación:", resultado_multiplicacion)
+print("División:", resultado_division)
