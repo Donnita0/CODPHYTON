@@ -9,3 +9,9 @@ frutas.append("pera")  # Sintaxis: lista.append("nuevo_elemento")
 # 3. Imprimir la lista de frutas
 # Usamos 'print' para mostrar el mensaje "Lista de frutas:" seguido de la lista completa de frutas
 print("Lista de frutas:", frutas)  # Sintaxis: print("mensaje", variable)
+
+# 4. Recorrer cada fruta en la lista y mostrar un mensaje
+# Usamos un bucle 'for' para recorrer la lista de frutas. En cada iteración, la variable 'fruta' contiene el elemento actual
+# y se imprime el mensaje "Tengo una" seguido del nombre de la fruta.
+for fruta in frutas:  # Sintaxis: for item in lista:
+    print("Tengo una", fruta)  # Sintaxis: print("mensaje", variable)
