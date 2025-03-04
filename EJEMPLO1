@@ -6,6 +6,9 @@ Equipo: Voltios
 #Definimos dos variables numericas y les asignamos valores
 numero1 = 5 #Asignamos el valor 5 a la variable numero1
 numero2 = 3 #Asignamos el valor 3 a la variable numero2 
+multiplicacion = numero1 * numero2  # Multiplicamos numero1 por numero2 y guardamos el resultado en multiplicacion
+division = numero1 / numero2  # Dividimos numero1 entre numero2 y guardamos el resultado en division
+
 
 #Realizamos operaciones matematicas basicas 
 suma = numero1 + numero2 #sumamos numero1 y numero2 y guardamos el resultado en una suma.
@@ -26,3 +29,21 @@ print("Suma:", resultado_suma)
 print("Resta:", resultado_resta)
 print("Multiplicación:", resultado_multiplicacion)
 print("División:", resultado_division)
+
+#Ejemplo del codigo 
+
+# Definir dos números
+numero1 = 10  # Primer número
+numero2 = 2   # Segundo número
+
+# Operaciones básicas
+suma = numero1 + numero2  # 10 + 2 = 12
+resta = numero1 - numero2  # 10 - 2 = 8
+multiplicacion = numero1 * numero2  # 10 * 2 = 20
+division = numero1 / numero2  # 10 / 2 = 5.0
+
+# Mostrar resultados
+print("Suma:", suma)  # Muestra 12
+print("Resta:", resta)  # Muestra 8
+print("Multiplicación:", multiplicacion)  # Muestra 20
+print("División:", division)  # Muestra 5.0.
