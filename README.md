@@ -4,3 +4,4 @@ Nombre de los integrantes del equipo:
 Trujillo Franco Karla Yorleni
 Cortes Romero Donnalet Guadalupe 
 Cervantes Rendon Jonathan Isaac 
+Solano Gonzalez Josue
