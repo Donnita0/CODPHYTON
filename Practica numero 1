@@ -1,0 +1,122 @@
+Conexión de sensores a Arduino
+Los sensores a conectar son:
+DHT11 o DHT22 (Temperatura y Humedad)
+VCC → 5V
+GND → GND
+DATA → Un pin digital de Arduino (ejemplo: D2)
+Requiere la librería DHT.h
+
+LDR (Luminosidad)
+Un extremo del LDR a 5V
+Otro extremo a un divisor de tensión con una resistencia de 10kΩ
+Punto medio del divisor a A0 (entrada analógica de Arduino)
+
+Sensor de Voltaje (Divisor de Voltaje con resistencias)
+Usa dos resistencias en serie (Ejemplo: 100kΩ y 10kΩ)
+Punto medio del divisor a A1
+Voltaje máximo de entrada: 5V
+
+Código en Arduino
+Este código captura los datos de los sensores y los envía a través del puerto serial.
+
+codigo arduino
+
+#include <DHT.h>
+
+// Definir pines de los sensores
+#define DHTPIN 2        // Pin del sensor DHT11
+#define DHTTYPE DHT11   // Tipo de sensor DHT
+DHT dht(DHTPIN, DHTTYPE);
+
+#define LDR_PIN A0      // Pin del sensor de luz
+#define VOLT_PIN A1     // Pin del sensor de voltaje
+
+void setup() {
+    Serial.begin(9600); // Iniciar comunicación serial
+    dht.begin();        // Iniciar sensor DHT11
+}
+
+void loop() {
+    // Leer temperatura y humedad
+    float temperatura = dht.readTemperature();
+    float humedad = dht.readHumidity();
+    
+    // Leer luminosidad (0 a 1023)
+    int luminosidad = analogRead(LDR_PIN);
+
+    // Leer voltaje (Escala 0-5V)
+    float voltaje = analogRead(VOLT_PIN) * (5.0 / 1023.0);
+
+    // Validar si hay error en DHT
+    if (isnan(temperatura) || isnan(humedad)) {
+        Serial.println("Error en DHT11");
+        return;
+    }
+
+    // Formatear datos como CSV: "temp,hum,luz,volt"
+    Serial.print(temperatura); Serial.print(",");
+    Serial.print(humedad); Serial.print(",");
+    Serial.print(luminosidad); Serial.print(",");
+    Serial.println(voltaje);  // Finaliza la línea
+
+    delay(1000);  // Espera 1 segundo antes de la siguiente lectura
+}
+
+Código en Python (Spyder)
+Este código lee datos del puerto serial de Arduino y los almacena en un archivo CSV.
+
+ejecuta en la terminal de spyder:
+      pip install pyserial pandas
+
+codigo python en spyder 
+import serial
+import pandas as pd
+import time
+
+# Configurar el puerto serial (cambia COM3 por tu puerto en Windows, en Linux/Mac usa '/dev/ttyUSB0' o similar)
+arduino_port = "COM3"
+baud_rate = 9600
+
+try:
+    ser = serial.Serial(arduino_port, baud_rate, timeout=1)
+    print(f"Conectado a {arduino_port}")
+except:
+    print("Error: No se pudo conectar con Arduino.")
+    exit()
+
+# Crear un DataFrame vacío para almacenar datos
+columnas = ["Temperatura (°C)", "Humedad (%)", "Luminosidad", "Voltaje (V)"]
+df = pd.DataFrame(columns=columnas)
+
+# Nombre del archivo CSV
+archivo_csv = "datos_sensores.csv"
+
+print("Iniciando captura de datos...")
+
+try:
+    while True:
+        linea = ser.readline().decode().strip()  # Leer línea y decodificar
+        if linea:
+            try:
+                datos = [float(valor) for valor in linea.split(",")]  # Convertir a lista de números
+                if len(datos) == 4:  # Validar que sean 4 valores
+                    df.loc[len(df)] = datos  # Agregar datos al DataFrame
+                    print(datos)  # Mostrar en pantalla
+
+                    # Guardar en CSV cada 10 lecturas
+                    if len(df) % 10 == 0:
+                        df.to_csv(archivo_csv, index=False)
+                        print(f"Datos guardados en {archivo_csv}")
+
+            except ValueError:
+                print("Error en formato de datos recibido")
+
+        time.sleep(1)  # Esperar antes de la siguiente lectura
+
+except KeyboardInterrupt:
+    print("\nFinalizando...")
+    ser.close()
+    df.to_csv(archivo_csv, index=False)
+    print(f"Datos guardados en {archivo_csv}")
+
+
